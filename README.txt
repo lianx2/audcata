@@ -43,3 +43,7 @@ COURSE ATTRIBUTES perl
 @units      => units
 @total      => sum of units
 @instructor => instructor
+
+##################################
+EXAMPLE OUTPUT
+https://user-images.githubusercontent.com/69220047/182772454-4087e5e9-ad3c-48d5-9264-3827d448f0df.png
