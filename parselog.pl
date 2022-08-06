@@ -14,9 +14,10 @@ my $f2w = $ARGV[1];
 print "$f2w\n";
 
 printf "[Initializing] Data structures for parsing...\n";
-my $num_of_attributes = 4; # starting from 0
+my $num_of_attributes = 5; # starting from 0
 my @crn = ();
 my @title = ();
+my @lvl = ();
 my @units = ();
 my @total = ();
 my @instructor = ();
@@ -34,9 +35,21 @@ while (<F2O>) {
             push(@title, $title);
         }
         # Validate if data was extracted for each desired attribute.
-        # If not, append 'n/a' (only @instructor has this issue)
+        # If not, append 'n/a'
         if (@crn-1 > @instructor) {
             push(@instructor, 'n/a');
+        }
+        if (@crn-1 > @units) {
+            push(@units, 'n/a');
+            push(@total, 'n/a');
+        }
+    } elsif (/<img width=16 height=16 align="bottom" alt="/) {
+        while (/(?<=<img width=16 height=16 align="bottom" alt=")[a-zA-Z]+/g) {
+            if (/Undergrad/) {
+                push(@lvl, 'U');
+            } else {
+                push(@lvl, 'G');
+            }
         }
     } elsif (/<br>Units:/) {
         while (/(?<=<br>Units: )[0-9\-]+/g) {
@@ -77,7 +90,7 @@ if ((@crn+@title+@units+@total+@instructor) % ($num_of_attributes+1) != 0) {
 #}
 
 # Align indices of data for writing to file
-my @coursebook = (\@crn, \@title, \@units, \@total, \@instructor);
+my @coursebook = (\@crn, \@title, \@lvl, \@units, \@total, \@instructor);
 my $Excelbook = Excel::Writer::XLSX->new( $f2w );
 my $Excelsheet = $Excelbook->add_worksheet();
 print ("[Success] New .xlsx workbook created: $f2w\n");
@@ -102,9 +115,10 @@ my $headerformat = $Excelbook->add_format( %font2, %shading );
 # Apply headerformat to header row
 $Excelsheet->write( 0, 0, "num", $headerformat );
 $Excelsheet->write( 0, 1, "title", $headerformat );
-$Excelsheet->write( 0, 2, "units", $headerformat );
-$Excelsheet->write( 0, 3, "total", $headerformat );
-$Excelsheet->write( 0, 4, "instructor", $headerformat );
+$Excelsheet->write( 0, 2, "lvl", $headerformat );
+$Excelsheet->write( 0, 3, "units", $headerformat );
+$Excelsheet->write( 0, 4, "total", $headerformat );
+$Excelsheet->write( 0, 5, "instructor", $headerformat );
 print("[Progress] Writing to spreadsheet...\n");
 # Write data...
 for ($row=0; $row<=$#crn; $row++) {
