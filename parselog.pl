@@ -20,7 +20,7 @@ my @title = ();
 my @units = ();
 my @total = ();
 my @instructor = ();
-#my $index = -1;
+
 # extract out course attributes
 print "[Progress] Parsing input catalog...\n";
 open (F2O, "<", "$f2o") || die "Cannot open $f2o: $!";
@@ -32,6 +32,11 @@ while (<F2O>) {
             my ($name, $title) = split / /, $&, 2;
             push(@crn, $name);
             push(@title, $title);
+        }
+        # Validate if data was extracted for each desired attribute.
+        # If not, append 'n/a' (only @instructor has this issue)
+        if (@crn-1 > @instructor) {
+            push(@instructor, 'n/a');
         }
     } elsif (/<br>Units:/) {
         while (/(?<=<br>Units: )[0-9\-]+/g) {
