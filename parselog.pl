@@ -115,20 +115,3 @@ for ($row=0; $row<=$#crn; $row++) {
 }
 $Excelbook->close;
 print("[Success] Finished writing to spreadsheet $f2w\n");
-
-# 20220523 OLD: Parsed data separately into two textfiles.
-#open (F2W, ">", "$f2w1") || die "Cannot open $f2w1: $!";
-#for ($i=0; $i<=$#courses; $i++){
-#    @courseid = split(/\s+/, $courses[$i], 2);
-#    printf F2W "%s\t%s\t%s", $courseid[0], $level[$i], $units[$i];
-#    printf F2W "%s\t%15s\t%s\t%s", $courseid[0], $courseid[1], $level[$i], $units[$i];
-#}
-#close(F2W) || die "Cannot close $f2w1: $!";
-#
-#open (F2W, ">", "$f2w2") || die "Cannot open $f2w2: $!";
-#for ($i=0; $i<=$#courses; $i++){
-#    @courseid = split(/\s+/, $courses[$i], 2);
-#    printf F2W "%s\t%s", $courseid[0], $courseid[1];
-#}
-#close(F2W) || die "Cannot close $f2w2: $!";
-#print "[Success! Parsed catalog available as $f2w1 and $f2w2]\n";

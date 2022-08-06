@@ -35,6 +35,10 @@ main.py [httpreq] [xlsx]
 4) parselog.pl parses for specific course attirbutes
 5) parselog.pl generates an .xlsx file with a specific format
 
+20220805 NOTE: main.py now checks if an HTTP request has already been sent for a specific
+course number. If it has, main.py does no request another. The selected catalogs are compiled
+for parsing (httpreq).
+
 ##################################
 COURSE ATTRIBUTES perl
 
@@ -46,4 +50,6 @@ COURSE ATTRIBUTES perl
 
 ##################################
 EXAMPLE OUTPUT
-https://user-images.githubusercontent.com/69220047/182772454-4087e5e9-ad3c-48d5-9264-3827d448f0df.png
+20220803: https://user-images.githubusercontent.com/69220047/182772454-4087e5e9-ad3c-48d5-9264-3827d448f0df.png
+20220805: https://user-images.githubusercontent.com/69220047/183227952-d8dffb9a-ba4f-4ef4-80ed-3ca9a0d270ba.png
+
