@@ -11,7 +11,7 @@ def retrieveURL(num, httpreq):
     """
     # Retrieve the data from input URL...
     course = str(num)
-    url = 'http://student.mit.edu/catalog/m{}a.html'.format(course)
+    url = 'http://student.mit.edu/catalog/m{}.html'.format(course)
     print('[Initializing] Retrieving url = {}'.format(url))
     data = requests.get(url)
 
