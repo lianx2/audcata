@@ -11,7 +11,7 @@ use Excel::Writer::XLSX;
 printf "[Success] Retrieved $ARGV[0] to parse and $ARGV[1] to write.\n";
 my $f2o = $ARGV[0];
 my $f2w = $ARGV[1];
-print "$f2w\n";
+# print "$f2w\n";
 
 printf "[Initializing] Data structures for parsing...\n";
 my $num_of_attributes = 5; # starting from 0
@@ -22,7 +22,7 @@ my @units = ();
 my @total = ();
 my @instructor = ();
 
-# extract out course attributes
+# extract course attributes
 print "[Progress] Parsing input catalog...\n";
 open (F2O, "<", "$f2o") || die "Cannot open $f2o: $!";
 while (<F2O>) {

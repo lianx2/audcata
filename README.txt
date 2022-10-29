@@ -15,7 +15,7 @@ num.txt     => holds MIT course numbers for HTTP request
 ##################################
 ASSOCIATED CMDS, ALIASES
 
-$ mitlog [httpreq] [xlsx]   => executes main.py
+$ mitlog [xlsx]             => executes main.py
 $ bucket [file]             => moves files to winbucket
 
     supplemental: apd, rmf => append, remove from num.txt
