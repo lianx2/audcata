@@ -36,7 +36,7 @@ main.py [httpreq] [xlsx]
 5) parselog.pl generates an .xlsx file with a specific format
 
 20220805 NOTE: main.py now checks if an HTTP request has already been sent for a specific
-course number. If it has, main.py does no request another. The selected catalogs are compiled
+course number. If it has, main.py does not request another. The selected catalogs are compiled
 for parsing (httpreq).
 
 ##################################
